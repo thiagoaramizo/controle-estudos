@@ -2,7 +2,13 @@ import Tarefa from "../../types/tarefas";
 import Item from "./Item/Item";
 import style from './Lista.module.scss'
 
-function Lista({ tarefas }: {tarefas: Tarefa[] }) {
+
+interface Props {
+    tarefas: Tarefa[]
+    selecionaTarefa: (tarefaSelecionada: Tarefa) => void
+}
+
+function Lista({ tarefas, selecionaTarefa }: Props) {
     
     return (
         <aside className={style.listaTarefas}>
@@ -16,6 +22,7 @@ function Lista({ tarefas }: {tarefas: Tarefa[] }) {
                         completado={item.completado}
                         id={item.id}
                         key={item.id}
+                        selecionaTarefa={selecionaTarefa}
                     />
                 )) }   
             </ul>
